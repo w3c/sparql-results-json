@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.w3.org/2023/sparql/results.json",
     "type": "object",
     "required": [
         "head"
@@ -55,6 +56,22 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "object",
+                            "dependencies": {
+                                "xml:lang": {
+                                    "not": {
+                                        "required": [
+                                            "datatype"
+                                        ]
+                                    }
+                                },
+                                "datatype": {
+                                    "not": {
+                                        "required": [
+                                            "xml:lang"
+                                        ]
+                                    }
+                                }
+                            },
                             "properties": {
                                 "type": {
                                     "type": "string",
