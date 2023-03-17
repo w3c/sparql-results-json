@@ -4,6 +4,22 @@
     "required": [
         "head"
     ],
+    "dependencies": {
+        "boolean": {
+            "not": {
+                "required": [
+                    "results"
+                ]
+            }
+        },
+        "results": {
+            "not": {
+                "required": [
+                    "boolean"
+                ]
+            }
+        }
+    },
     "properties": {
         "head": {
             "type": "object",
@@ -52,8 +68,7 @@
                                     "type": "string"
                                 },
                                 "xml:lang": {
-                                    "type": "string",
-                                    "maxLength": 35
+                                    "type": "string"
                                 },
                                 "datatype": {
                                     "type": "string",
