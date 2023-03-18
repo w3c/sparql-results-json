@@ -30,7 +30,7 @@
                     "type": "array",
                     "items": {
                         "type": "string",
-                        "format": "uri"
+                        "format": "iri"
                     }
                 },
                 "vars": {
@@ -89,7 +89,7 @@
                                 },
                                 "datatype": {
                                     "type": "string",
-                                    "format": "uri"
+                                    "format": "iri"
                                 }
                             },
                             "required": [
