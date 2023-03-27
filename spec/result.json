@@ -20,7 +20,6 @@
                             }
                         }
                     },
-                    "additionalProperties": false
                 },
                 "boolean": {
                     "type": "boolean"
