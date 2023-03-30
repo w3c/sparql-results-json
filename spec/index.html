@@ -94,8 +94,8 @@
   <body>
     <section id="abstract">
       <h2>Abstract</h2>
-<p><a href="http://www.w3.org/TR/sparql11-query/">SPARQL</a> is a set of standards for the query and update of RDF data, along with ways to access such data over the web. This document describes
-    the representation of SELECT and ASK query results using <a href="http://www.ietf.org/rfc/rfc4627.txt">JSON</a>.</p>
+<p><a data-cite="SPARQL12-CONCEPTS#">SPARQL</a> is a set of standards for the query and update of RDF data, along with ways to access such data over the web. This document describes
+    the representation of SELECT and ASK query results using <a data-cite="rfc4627#">JSON</a>.</p>
     </section>
 
     <section id="sotd" class="introductory">
@@ -129,11 +129,11 @@
 <!-- BODY -->
     <section id="introduction">
       <h2>Introduction</h2>
-      <p>This document describes how to serialize SPARQL results (SELECT and ASK query forms) in a <a href="http://www.ietf.org/rfc/rfc4627.txt">JSON</a> format. The format is designed to be a
+      <p>This document describes how to serialize SPARQL results (SELECT and ASK query forms) in a <a data-cite="rfc4627#">JSON</a> format. The format is designed to be a
       complete representation of the information in the query results. The results of a SELECT query are serilialized as an array, where each array element is one "row" of the query results; the
       results of an ASK query give the boolean value of the query result.</p>
       <p>An Internet Media Type is provied for <code>application/sparql-results+json</code>.</p>
-      <p>There is also a <a href="http://www.w3.org/TR/rdf-sparql-XMLres/">SPARQL Query Results XML Format</a> [<a href="#SRX">SRX</a>] which follows a similar design pattern but uses XML as the
+      <p>There is also a [[[SPARQL12-RESULTS-XML]]] which follows a similar design pattern but uses XML as the
       serialization.</p>
       <p>Unless otherwise noted in the section heading, all sections and appendices in this document are normative.</p>
     </section>
@@ -358,11 +358,11 @@
         <dt>Optional parameters:</dt>
         <dd>None</dd>
         <dt>Encoding considerations:</dt>
-        <dd>The encoding considerations of the SPARQL Query Results JSON Format is identical to those of the "application/json" as specified in [<a href="#JSON-RFC">JSON-RFC</a>].</dd>
+        <dd>The encoding considerations of the SPARQL Query Results JSON Format is identical to those of the "application/json" as specified in [[RFC4627]].</dd>
         <dt>Security considerations:</dt>
-        <dd>SPARQL query results uses URIs. See Section 7 of [<a href="#RFC3986">RFC3986</a>].<br>
-        SPARQL query results uses IRIs. See Section 8 of [<a href="#RFC3987">RFC3987</a>].<br>
-        The security considerations of the SPARQL Query Results JSON Format is identical to those of the "application/json" as specified in [<a href="#JSON-RFC">JSON-RFC</a>].</dd>
+        <dd>SPARQL query results uses URIs. See Section 7 of [[RFC3986]].<br>
+        SPARQL query results uses IRIs. See Section 8 of [[RFC3987]].<br>
+        The security considerations of the SPARQL Query Results JSON Format is identical to those of the "application/json" as specified in [[RFC4627]].</dd>
         <dt>Interoperability considerations:</dt>
         <dd>There are no known interoperability issues.</dd>
         <dt>Published specification:</dt>
@@ -385,38 +385,6 @@
         <dt>Author/Change controller:</dt>
         <dd>The SPARQL specification is a work product of the World Wide Web Consortium's SPARQL Working Group. The W3C has change control over these specifications.</dd>
       </dl>
-    </section>
-    <section id="sec-bibliography">
-      <h2>References</h2>
-      <section id="sec-normative-refs">
-        <h3>Normative References</h3>
-        <dl>
-          <dt><span class="doc-ref" id="JSON-RFC">[JSON-RFC]</span></dt>
-          <dd><a href="http://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>,<br>
-          The application/json Media Type for JavaScript Object Notation (JSON),<br>
-          D. Crockford,<br>
-          <a href="http://www.ietf.org/rfc/rfc4627.txt">http://www.ietf.org/rfc/rfc4627.txt</a></dd>
-          <dt><span class="doc-ref" id="RFC3986">[RFC3986]</span></dt>
-          <dd><a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>,<br>
-          Uniform Resource Identifier (URI): Generic Syntax,<br>
-          T. Berners-Lee, R. Fielding, L. Masinter,<br>
-          <a href="http://www.ietf.org/rfc/rfc3986.txt">http://www.ietf.org/rfc/rfc3986.txt</a></dd>
-          <dt><span class="doc-ref" id="RFC3987">[RFC3987]</span></dt>
-          <dd><a href="http://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>,<br>
-          Internationalized Resource Identifiers (IRIs),<br>
-          M. Dürst, M. Suignard,<br>
-          <a href="http://www.ietf.org/rfc/rfc3987.txt">http://www.ietf.org/rfc/rfc3987.txt</a></dd>
-        </dl>
-      </section>
-      <section id="sec-non-normative-refs">
-        <h3>Other References</h3>
-        <dl>
-          <dt><span class="doc-ref" id="SRX">[SRX]</span></dt>
-          <dd><cite><a href="http://www.w3.org/TR/2013/REC-rdf-sparql-XMLres-20130321">SPARQL Query Results XML Format (Second Edition)</a></cite>, D. Beckett, J. Broekstra, Editors, W3C
-          Recommendation, 21 March 2013, http://www.w3.org/TR/2013/REC-rdf-sparql-XMLres-20130321. <a href="http://www.w3.org/TR/rdf-sparql-XMLres/" title=
-          "Latest version of SPARQL Query Results XML Format (Second Edition)">Latest version</a> available at http://www.w3.org/TR/rdf-sparql-XMLres.</dd>
-        </dl>
-      </section>
     </section>
     
 <!-- BODY -->
