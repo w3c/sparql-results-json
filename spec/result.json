@@ -24,8 +24,7 @@
                 "boolean": {
                     "type": "boolean"
                 }
-            },
-            "additionalProperties": false
+            }
         },
         {
             "type": "object",
@@ -53,8 +52,7 @@
                                 "type": "string"
                             }
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "results": {
                     "type": "object",
@@ -82,8 +80,7 @@
                                                     "type": "string",
                                                     "format": "iri"
                                                 }
-                                            },
-                                            "additionalProperties": false
+                                            }
                                         },
                                         {
                                             "type": "object",
@@ -98,8 +95,7 @@
                                                 "value": {
                                                     "type": "string"
                                                 }
-                                            },
-                                            "additionalProperties": false
+                                            }
                                         },
                                         {
                                             "type": "object",
@@ -118,8 +114,7 @@
                                                 "xml:lang": {
                                                     "type": "string"
                                                 }
-                                            },
-                                            "additionalProperties": false
+                                            }
                                         },
                                         {
                                             "type": "object",
@@ -138,18 +133,15 @@
                                                     "type": "string",
                                                     "format": "iri"
                                                 }
-                                            },
-                                            "additionalProperties": false
+                                            }
                                         }
                                     ]
                                 }
                             }
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 }
-            },
-            "additionalProperties": false
+            }
         }
     ]
 }
