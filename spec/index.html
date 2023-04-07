@@ -476,7 +476,7 @@ span.cancast:hover { background-color: #ffa;
         </section>
         <section id="select-encode-terms">
           <h4>Encoding RDF terms</h4>
-          <p>An RDF term (IRI, literal or blank node) is encoded as a JSON object. All aspects of the RDF term are represented. The JSON object has a <code>"type"</code> member and other members
+          <p>An RDF term (IRI, literal, blank node, or quoted triple) is encoded as a JSON object. All aspects of the RDF term are represented. The JSON object has a <code>"type"</code> member and other members
           depending on the specific kind of RDF term.</p>
           <table style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-width: 1px">
             <tbody>
@@ -504,10 +504,15 @@ span.cancast:hover { background-color: #ffa;
                 <td>Blank node, label <em><b>B</b></em></td>
                 <td><code>{"type": "bnode", "value": "<em><b>B</b></em>"}</code></td>
               </tr>
+              <tr>
+                <td>Quoted triple, with subject <em><b>S</b></em>, predicate <em><b>P</b></em>, and object <em><b>O</b></em></td>
+                <td><code>{"type": "triple", "subject": "<em><b>S</b></em>", "predicate": "<em><b>P</b></em>", "object": "<em><b>O</b></em>"}</code></td>
+              </tr>
             </tbody>
           </table>
           <p>The blank node label is scoped to the results object. That is, two blank nodes with the same label in a single SPARQL Results JSON object are the same blank node. This is not an
           indication of any internal system identifier the SPARQL processor may use. Use of the same label in another SPARQL Results JSON object does not imply it is the same blank node.</p>
+          <p>The subject, predicate, and object of a quoted triple are encoded using the same format, recursively.</p>
         </section>
       </section>
     </section>
@@ -543,7 +548,8 @@ span.cancast:hover { background-color: #ffa;
            "mbox",
            "age",
            "blurb",
-           "friend"
+           "friend",
+           "quoted"
            ]
        },
    "results": {
@@ -563,7 +569,26 @@ span.cancast:hover { background-color: #ffa;
                      "value": "&lt;p xmlns=\"http://www.w3.org/1999/xhtml\"&gt;My name is &lt;b&gt;alice&lt;/b&gt;&lt;/p&gt;"
                    },
 
-                   "friend" : { "type": "bnode", "value": "r2" }
+                   "friend" : { "type": "bnode", "value": "r2" },
+
+                   "quoted" : {
+                     "type": "triple",
+                     "value": {
+                        "subject": {
+                           "type": "uri",
+                           "value" "http://example.org/alice"
+                        },
+                        "predicate": {
+                           "type": "uri",
+                           "value" "http://example.org/name"
+                        },
+                        "object": {
+                           "type": "literal",
+                           "value" "Alice",
+                           "datatype": "http://www.w3.org/2001/XMLSchema#string"
+                        }
+                     }
+                   }
                },
                {
                    "x" : { "type": "bnode", "value": "r2" },
@@ -574,7 +599,26 @@ span.cancast:hover { background-color: #ffa;
 
                    "mbox" : { "type": "uri", "value": "mailto:bob@work.example.org" },
 
-                   "friend" : { "type": "bnode", "value": "r1" }
+                   "friend" : { "type": "bnode", "value": "r1" },
+
+                   "quoted" : {
+                     "type": "triple",
+                     "value": {
+                        "subject": {
+                           "type": "uri",
+                           "value" "http://example.org/bob"
+                        },
+                        "predicate": {
+                           "type": "uri",
+                           "value" "http://example.org/name"
+                        },
+                        "object": {
+                           "type": "literal",
+                           "value" "Bob",
+                           "datatype": "http://www.w3.org/2001/XMLSchema#string"
+                        }
+                     }
+                   }
                }
            ]
        }
