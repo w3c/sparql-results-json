@@ -533,10 +533,12 @@ span.cancast:hover { background-color: #ffa;
       </section>
     </section>
     <section id="example">
-      <h2>Example</h2>
+      <h2>Examples</h2>
       <p>This section is not normative.</p>
-      <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/2009/sparql/xml-results/output.srx">output.srx</a>:</p>
-      <pre class="json">{
+      <section id="example-bindings">
+        <h2>Variable Binding Results Examples</h2>
+        <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/2009/sparql/xml-results/output.srx">output.srx</a>:</p>
+        <pre class="json">{
    "head": {
        "link": [
            "http://www.w3.org/TR/rdf-sparql-XMLres/example.rq"
@@ -548,8 +550,7 @@ span.cancast:hover { background-color: #ffa;
            "mbox",
            "age",
            "blurb",
-           "friend",
-           "quoted"
+           "friend"
            ]
        },
    "results": {
@@ -569,26 +570,7 @@ span.cancast:hover { background-color: #ffa;
                      "value": "&lt;p xmlns=\"http://www.w3.org/1999/xhtml\"&gt;My name is &lt;b&gt;alice&lt;/b&gt;&lt;/p&gt;"
                    },
 
-                   "friend" : { "type": "bnode", "value": "r2" },
-
-                   "quoted" : {
-                     "type": "triple",
-                     "value": {
-                        "subject": {
-                           "type": "uri",
-                           "value" "http://example.org/alice"
-                        },
-                        "predicate": {
-                           "type": "uri",
-                           "value" "http://example.org/name"
-                        },
-                        "object": {
-                           "type": "literal",
-                           "value" "Alice",
-                           "datatype": "http://www.w3.org/2001/XMLSchema#string"
-                        }
-                     }
-                   }
+                   "friend" : { "type": "bnode", "value": "r2" }
                },
                {
                    "x" : { "type": "bnode", "value": "r2" },
@@ -599,22 +581,71 @@ span.cancast:hover { background-color: #ffa;
 
                    "mbox" : { "type": "uri", "value": "mailto:bob@work.example.org" },
 
-                   "friend" : { "type": "bnode", "value": "r1" },
+                   "friend" : { "type": "bnode", "value": "r1" }
+               }
+           ]
+       }
+}</pre>
+      </section>
+      <section id="example-bindings-quoted">
+        <h2>Variable Binding Results Examples with Quoted Triples</h2>
+        <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/2009/sparql/xml-results/output-quoted.srx">output-quoted.srx</a> that contains quoted triples:</p>
+        <pre class="json">{
+   "head": {
+       "link": [
+           "http://www.w3.org/TR/rdf-sparql-XMLres/example-quoted.rq"
+           ],
+       "vars": [
+           "x",
+           "name",
+           "quoted"
+           ]
+       },
+   "results": {
+       "bindings": [
+               {
+                   "x" : { "type": "bnode", "value": "r1" },
+
+                   "name" : {  "type": "literal", "value": "Alice" } ,
 
                    "quoted" : {
                      "type": "triple",
                      "value": {
                         "subject": {
                            "type": "uri",
-                           "value" "http://example.org/bob"
+                           "value": "http://example.org/alice"
                         },
                         "predicate": {
                            "type": "uri",
-                           "value" "http://example.org/name"
+                           "value": "http://example.org/name"
                         },
                         "object": {
                            "type": "literal",
-                           "value" "Bob",
+                           "value": "Alice",
+                           "datatype": "http://www.w3.org/2001/XMLSchema#string"
+                        }
+                     }
+                   }
+               },
+               {
+                   "x" : { "type": "bnode", "value": "r2" },
+                   
+                   "name" : { "type": "literal", "value": "Bob", "xml:lang": "en" },
+
+                   "quoted" : {
+                     "type": "triple",
+                     "value": {
+                        "subject": {
+                           "type": "uri",
+                           "value": "http://example.org/bob"
+                        },
+                        "predicate": {
+                           "type": "uri",
+                           "value": "http://example.org/name"
+                        },
+                        "object": {
+                           "type": "literal",
+                           "value": "Bob",
                            "datatype": "http://www.w3.org/2001/XMLSchema#string"
                         }
                      }
@@ -623,6 +654,7 @@ span.cancast:hover { background-color: #ffa;
            ]
        }
 }</pre>
+      </section>
     </section>
     <section id="content-type">
       <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
