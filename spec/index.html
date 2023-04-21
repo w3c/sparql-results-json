@@ -462,15 +462,15 @@ span.cancast:hover { background-color: #ffa;
           <p>A variable does not appear in an array element if it is not bound in that particular query solution.</p>
           <p>The order of elements in the bindings array reflects the order, if any, of the query solution sequence.</p>
           <pre class="json">"bindings" : [
-               {
-                 "a" : { ... } ,
-                 "b" : { ... } 
-               } ,
-               {
-                 "a" : { ... } ,
-                 "b" : { ... } 
-               }
-             ]</pre>
+  {
+    "a" : { ... } ,
+    "b" : { ... } 
+  } ,
+  {
+    "a" : { ... } ,
+    "b" : { ... } 
+  }
+]</pre>
           <p>If the query returns no solutions, an empty array is used.</p>
           <pre class="json">"bindings" : []</pre>
         </section>
@@ -538,121 +538,87 @@ span.cancast:hover { background-color: #ffa;
       <section id="example-bindings">
         <h2>Variable Binding Results Examples</h2>
         <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/2009/sparql/xml-results/output.srx">output.srx</a>:</p>
-        <pre class="json">{
-   "head": {
-       "link": [
-           "http://www.w3.org/TR/rdf-sparql-XMLres/example.rq"
-           ],
-       "vars": [
-           "x",
-           "hpage",
-           "name",
-           "mbox",
-           "age",
-           "blurb",
-           "friend"
-           ]
-       },
-   "results": {
-       "bindings": [
-               {
-                   "x" : { "type": "bnode", "value": "r1" },
+        <pre class="json">
 
-                   "hpage" : { "type": "uri", "value": "http://work.example.org/alice/" },
-
-                   "name" : {  "type": "literal", "value": "Alice" } ,
-                   
-                   "mbox" : {  "type": "literal", "value": "" } ,
-
-                   "blurb" : {
-                     "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
-                     "type": "literal",
-                     "value": "&lt;p xmlns=\"http://www.w3.org/1999/xhtml\"&gt;My name is &lt;b&gt;alice&lt;/b&gt;&lt;/p&gt;"
-                   },
-
-                   "friend" : { "type": "bnode", "value": "r2" }
-               },
-               {
-                   "x" : { "type": "bnode", "value": "r2" },
-                   
-                   "hpage" : { "type": "uri", "value": "http://work.example.org/bob/" },
-                   
-                   "name" : { "type": "literal", "value": "Bob", "xml:lang": "en" },
-
-                   "mbox" : { "type": "uri", "value": "mailto:bob@work.example.org" },
-
-                   "friend" : { "type": "bnode", "value": "r1" }
-               }
-           ]
-       }
-}</pre>
+{
+  "head": {
+    "link": [ "http://www.w3.org/TR/rdf-sparql-XMLres/example.rq" ],
+    "vars": [
+      "x",
+      "hpage",
+      "name",
+      "mbox",
+      "age",
+      "blurb",
+      "friend"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "x":     { "type": "bnode",   "value": "r1" },
+        "hpage": { "type": "uri",     "value": "http://work.example.org/alice/" },
+        "name":  { "type": "literal", "value": "Alice" },
+        "mbox":  { "type": "literal", "value": "" },
+        "blurb": {
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
+          "type": "literal",
+          "value": "&lt;p xmlns=\"http://www.w3.org/1999/xhtml\"&gt;My name is &lt;b&gt;alice&lt;/b&gt;&lt;/p&gt;"
+        },
+        "friend": { "type": "bnode", "value": "r2" }
+      },
+      {
+        "x":      { "type": "bnode",   "value": "r2" },
+        "hpage":  { "type": "uri",     "value": "http://work.example.org/bob/" },
+        "name":   { "type": "literal", "value": "Bob", "xml:lang": "en" },
+        "mbox":   { "type": "uri",     "value": "mailto:bob@work.example.org" },
+        "friend": { "type": "bnode",   "value": "r1" }
+      }
+    ]
+  }
+}
+</pre>
       </section>
       <section id="example-bindings-quoted">
         <h2>Variable Binding Results Examples with Quoted Triples</h2>
         <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/2009/sparql/xml-results/output-quoted.srx">output-quoted.srx</a> that contains quoted triples:</p>
         <pre class="json">{
-   "head": {
-       "link": [
-           "http://www.w3.org/TR/rdf-sparql-XMLres/example-quoted.rq"
-           ],
-       "vars": [
-           "x",
-           "name",
-           "quoted"
-           ]
-       },
-   "results": {
-       "bindings": [
-               {
-                   "x" : { "type": "bnode", "value": "r1" },
-
-                   "name" : {  "type": "literal", "value": "Alice" } ,
-
-                   "quoted" : {
-                     "type": "triple",
-                     "value": {
-                        "subject": {
-                           "type": "uri",
-                           "value": "http://example.org/alice"
-                        },
-                        "predicate": {
-                           "type": "uri",
-                           "value": "http://example.org/name"
-                        },
-                        "object": {
-                           "type": "literal",
-                           "value": "Alice",
-                           "datatype": "http://www.w3.org/2001/XMLSchema#string"
-                        }
-                     }
-                   }
-               },
-               {
-                   "x" : { "type": "bnode", "value": "r2" },
-                   
-                   "name" : { "type": "literal", "value": "Bob", "xml:lang": "en" },
-
-                   "quoted" : {
-                     "type": "triple",
-                     "value": {
-                        "subject": {
-                           "type": "uri",
-                           "value": "http://example.org/bob"
-                        },
-                        "predicate": {
-                           "type": "uri",
-                           "value": "http://example.org/name"
-                        },
-                        "object": {
-                           "type": "literal",
-                           "value": "Bob",
-                           "datatype": "http://www.w3.org/2001/XMLSchema#string"
-                        }
-                     }
-                   }
-               }
-           ]
-       }
+  "head": {
+    "link": [ "http://www.w3.org/TR/rdf-sparql-XMLres/example-quoted.rq" ],
+    "vars": [
+      "x",
+      "name",
+      "quoted"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "x":    { "type": "bnode",   "value": "r1" },
+        "name": { "type": "literal", "value": "Alice" },
+        "quoted": {
+          "type": "triple",
+          "value": {
+            "subject":   { "type": "uri",     "value": "http://example.org/alice" },
+            "predicate": { "type": "uri",     "value": "http://example.org/name" },
+            "object":    { "type": "literal", "value": "Alice", "datatype": "http://www.w3.org/2001/XMLSchema#string" }
+          }
+        }
+      },
+      {
+        "x":    { "type": "bnode",   "value": "r2" },
+        "name": { "type": "literal", "value": "Bob", "xml:lang": "en" },
+        "quoted": {
+          "type": "triple",
+          "value": {
+            "subject":   { "type": "uri",     "value": "http://example.org/bob" },
+            "predicate": { "type": "uri",     "value": "http://example.org/name" },
+            "object":    { "type": "literal", "value": "Bob", "datatype": "http://www.w3.org/2001/XMLSchema#string" }
+          }
+        }
+      }
+    ]
+  }
 }</pre>
       </section>
     </section>
