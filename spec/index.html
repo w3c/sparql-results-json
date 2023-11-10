@@ -517,6 +517,7 @@ span.cancast:hover { background-color: #ffa;
           <p>The blank node label is scoped to the results object. That is, two blank nodes with the same label in a single SPARQL Results JSON object are the same blank node. This is not an
           indication of any internal system identifier the SPARQL processor may use. Use of the same label in another SPARQL Results JSON object does not imply it is the same blank node.</p>
           <p>The subject, predicate, and object of a quoted triple are encoded using the same format, recursively.</p>
+          <p class="note">The "xml:lang" and "its:dir" keys resemble usage of XML namespaces due to alignment with the [[[SPARQL12-RESULTS-XML]]] specification, but namespaces do not exist JSON, which means that these keys should be used as-is.</p>
         </section>
       </section>
     </section>
