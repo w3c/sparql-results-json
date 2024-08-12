@@ -476,7 +476,7 @@ span.cancast:hover { background-color: #ffa;
         </section>
         <section id="select-encode-terms">
           <h4>Encoding RDF terms</h4>
-          <p>An RDF term (IRI, literal, blank node, or quoted triple) is encoded as a JSON object. All aspects of the RDF term are represented. The JSON object has a <code>"type"</code> member and other members
+          <p>An RDF term (IRI, literal, blank node, or triple term) is encoded as a JSON object. All aspects of the RDF term are represented. The JSON object has a <code>"type"</code> member and other members
           depending on the specific kind of RDF term.</p>
           <table style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-width: 1px">
             <tbody>
@@ -509,14 +509,14 @@ span.cancast:hover { background-color: #ffa;
                 <td><code>{"type": "bnode", "value": "<em><b>B</b></em>"}</code></td>
               </tr>
               <tr>
-                <td>Quoted triple, with subject <em><b>S</b></em>, predicate <em><b>P</b></em>, and object <em><b>O</b></em></td>
+                <td>Triple term, with subject <em><b>S</b></em>, predicate <em><b>P</b></em>, and object <em><b>O</b></em></td>
                 <td><code>{"type": "triple", "value": {"subject": "<em><b>S</b></em>", "predicate": "<em><b>P</b></em>", "object": "<em><b>O</b></em>"}}</code></td>
               </tr>
             </tbody>
           </table>
           <p>The blank node label is scoped to the results object. That is, two blank nodes with the same label in a single SPARQL Results JSON object are the same blank node. This is not an
           indication of any internal system identifier the SPARQL processor may use. Use of the same label in another SPARQL Results JSON object does not imply it is the same blank node.</p>
-          <p>The subject, predicate, and object of a quoted triple are encoded using the same format, recursively.</p>
+          <p>The subject, predicate, and object of a triple term are encoded using the same format, recursively.</p>
           <p class="note">The <code>xml:lang</code> and <code>its:dir</code> keys resemble terms in XML namespaces due to alignment with the [[[SPARQL12-RESULTS-XML]]] specification, but such namespaces do not exist in JSON, which means that these keys are to be used "as is".</p>
         </section>
       </section>
@@ -584,16 +584,16 @@ span.cancast:hover { background-color: #ffa;
 }
 </pre>
       </section>
-      <section id="example-bindings-quoted">
-        <h2>Variable Binding Results Examples with Quoted Triples</h2>
-        <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/TR/sparql12-results-xml/output-quoted.srx">output-quoted.srx</a> that contains quoted triples:</p>
+      <section id="example-bindings-triple-term">
+        <h2>Variable Binding Results Examples with Triple Terms</h2>
+        <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/TR/sparql12-results-xml/output-triple-terms.srx">output-triple-terms.srx</a> that contains triple terms:</p>
         <pre class="json">{
   "head": {
-    "link": [ "http://www.w3.org/TR/rdf-sparql-XMLres/example-quoted.rq" ],
+    "link": [ "http://www.w3.org/TR/rdf-sparql-XMLres/example-triple-terms.rq" ],
     "vars": [
       "x",
       "name",
-      "quoted"
+      "triple"
     ]
   },
   "results": {
@@ -601,7 +601,7 @@ span.cancast:hover { background-color: #ffa;
       {
         "x":    { "type": "bnode",   "value": "r1" },
         "name": { "type": "literal", "value": "Alice" },
-        "quoted": {
+        "triple": {
           "type": "triple",
           "value": {
             "subject":   { "type": "uri",     "value": "http://example.org/alice" },
@@ -613,7 +613,7 @@ span.cancast:hover { background-color: #ffa;
       {
         "x":    { "type": "bnode",   "value": "r2" },
         "name": { "type": "literal", "value": "Bob", "xml:lang": "en" },
-        "quoted": {
+        "triple": {
           "type": "triple",
           "value": {
             "subject":   { "type": "uri",     "value": "http://example.org/bob" },
@@ -678,7 +678,7 @@ span.cancast:hover { background-color: #ffa;
         <li>Fix link to incorrect srx file in <a href="#example" class="sectionRef"></a></li>
         <li>Add JSON Schema file for SPARQL Query Results JSON</li>
         <li>Use Media Type instead of MIME Type in <a href="#media-type" class="sectionRef"></a></li>
-        <li>Allow quoted triples to be expressed in <a href="#select-encode-terms" class="sectionRef"></a></li>
+        <li>Allow triple terms to be expressed in <a href="#select-encode-terms" class="sectionRef"></a></li>
         <li>Support directional language-tagged strings in <a href="#select-encode-terms" class="sectionRef"></a></li>
       </ul>
     </section>
