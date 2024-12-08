@@ -374,7 +374,7 @@ span.cancast:hover { background-color: #ffa;
       <code>"boolean"</code> member, depending on the query form.</p>
       <p>This example shows the results of a <code>SELECT</code> query. The query solutions are represented in an array which is the value of the <code>"bindings"</code> key, in turn part of an
       object that is the value of the <code>"results"</code> key:</p>
-      <pre class="json">{
+      <pre class="box json">{
   "head": { "vars": [ "book" , "title" ]
   } ,
   "results": { 
@@ -411,7 +411,7 @@ span.cancast:hover { background-color: #ffa;
   }
 }</pre>
       <p>This example shows the result from an <code>ASK</code> query:</p>
-      <pre class="json">{ 
+      <pre class="box json">{ 
   "head" : { } ,
   "boolean" : true
 }</pre>
@@ -424,7 +424,7 @@ span.cancast:hover { background-color: #ffa;
       <section id="select-head">
         <h3>"head"</h3>
         <p>The <code>"head"</code> member gives the variables mentioned in the results and may contain a <code>"link"</code> member.</p>
-        <pre class="json">{
+        <pre class="box json">{
 "head" { 
    "vars" : [ ... ] ,
    "link" : [ ... ] }</pre>
@@ -432,7 +432,7 @@ span.cancast:hover { background-color: #ffa;
           <h4>"vars"</h4>
           <p>The <code>"vars"</code> member is an array giving the names of the variables used in the results. These are the projected variables from the query. A variable is not necessarily given a
           value in every query solution of the results.</p>
-          <pre class="json">"vars" : [ "book" , "title" ] </pre>
+          <pre class="box json">"vars" : [ "book" , "title" ] </pre>
           <p>The order of variable names should correspond to the variables in the SELECT clause of the query, unless the query is of the form <code>SELECT *</code> in which case order is not
           significant.</p>
         </section>
@@ -440,7 +440,7 @@ span.cancast:hover { background-color: #ffa;
           <h4>"link"</h4>
           <p>The optional <code>"link"</code> member gives an array of URIs, as strings, to refer for further information. The format and content of these link references is not defined by this
           document.</p>
-          <pre class="json">"link" : [ "http://example/dataset/metadata.ttl" ] </pre>
+          <pre class="box json">"link" : [ "http://example/dataset/metadata.ttl" ] </pre>
         </section>
       </section>
       <section id="select-results">
@@ -454,7 +454,7 @@ span.cancast:hover { background-color: #ffa;
           within the <code>"bindings"</code> array will have appeared in the <a href="#select-vars"><code>"vars"</code></a> array in the results header.</p>
           <p>A variable does not appear in an array element if it is not bound in that particular query solution.</p>
           <p>The order of elements in the bindings array reflects the order, if any, of the query solution sequence.</p>
-          <pre class="json">"bindings" : [
+          <pre class="box json">"bindings" : [
   {
     "a" : { ... } ,
     "b" : { ... } 
@@ -465,7 +465,7 @@ span.cancast:hover { background-color: #ffa;
   }
 ]</pre>
           <p>If the query returns no solutions, an empty array is used.</p>
-          <pre class="json">"bindings" : []</pre>
+          <pre class="box json">"bindings" : []</pre>
         </section>
         <section id="select-encode-terms">
           <h4>Encoding RDF terms</h4>
@@ -527,7 +527,7 @@ span.cancast:hover { background-color: #ffa;
       <section id="ask-boolean">
         <h3>"boolean"</h3>
         <p>The result of an <code>ASK</code> query form are encoded by the <code>"boolean"</code> member, which takes either the JSON value <code>true</code> or the JSON value <code>false</code>.</p>
-        <pre class="json">"boolean" : true </pre>
+        <pre class="box json">"boolean" : true </pre>
       </section>
     </section>
     <section id="example">
@@ -536,7 +536,7 @@ span.cancast:hover { background-color: #ffa;
       <section id="example-bindings">
         <h2>Variable Binding Results Examples</h2>
         <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/2009/sparql/xml-results/output.srx">output.srx</a>:</p>
-        <pre class="json">
+        <pre class="box json">
 
 {
   "head": {
@@ -580,7 +580,7 @@ span.cancast:hover { background-color: #ffa;
       <section id="example-bindings-triple-term">
         <h2>Variable Binding Results Examples with Triple Terms</h2>
         <p>The following JSON is a serialization of the XML document <a class="reference" href="https://www.w3.org/TR/sparql12-results-xml/output-triple-terms.srx">output-triple-terms.srx</a> that contains triple terms:</p>
-        <pre class="json">{
+        <pre class="box json">{
   "head": {
     "link": [ "http://www.w3.org/TR/rdf-sparql-XMLres/example-triple-terms.rq" ],
     "vars": [
