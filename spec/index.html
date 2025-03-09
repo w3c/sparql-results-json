@@ -47,6 +47,17 @@
         //doJsonLd:     true
       };
     </script>
+
+    <style>
+      table.result {
+        border-collapse: collapse;
+      }
+
+      .result th , .result td {
+        border: 1px solid;
+        padding-inline: 0.5em;
+      }
+    </style>
   </head>
   <body>
     <section id="abstract">
@@ -119,7 +130,7 @@
   }
 }</pre>
       <p>This example shows the result from an <code>ASK</code> query:</p>
-      <pre class="json">{ 
+      <pre class="json">{
   "head" : { } ,
   "boolean" : true
 }</pre>
@@ -179,7 +190,7 @@
           <h4>Encoding RDF terms</h4>
           <p>An RDF term (IRI, literal, blank node, or triple term) is encoded as a JSON object. All aspects of the RDF term are represented. The JSON object has a <code>"type"</code> member and other members
           depending on the specific kind of RDF term.</p>
-          <table style="border-collapse: collapse; border-color: #000000; border-spacing: 5px; border-width: 1px">
+          <table class="result">
             <tbody>
               <tr>
                 <th>RDF Term</th>
