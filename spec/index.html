@@ -367,6 +367,39 @@ span.cancast:hover { background-color: #ffa;
       <p>There is also a [[[SPARQL12-RESULTS-XML]]] which follows a similar design pattern but uses XML as the
       serialization.</p>
       <p>Unless otherwise noted in the section heading, all sections and appendices in this document are normative.</p>
+
+	  <section id="version-announcement">
+	    <h3>Version Announcement</h3>
+	    <p>To indicate that RDF 1.2 features are used in the SPARQL results,
+        such as <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a> or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>,
+	    the optional `version` <a href="#media-type">Media Type parameter</a> can be set to `1.2`.
+        Alternatively, the <a href="#select-version">`"version"` member</a> can be used to specify this version.</p>
+        <p>When providing content over HTTP, servers can announce the version
+        using the optional `version` <a href="#media-type">Media Type parameter</a>:</p>
+
+        <pre id="ex-http-version-decl"
+             class="box http"
+             title="HTTP version announcement">GET /sparql/?query=PREFIX%20dc%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%3E%20%0ASELECT%20%3Fbook%20%3Fwho%20%0AWHERE%20%7B%20%3Fbook%20dc%3Acreator%20%3Fwho%20%7D%0A HTTP/1.1
+Host: www.example
+Accept: application/sparql-results+json; version=1.2
+        </pre>
+
+        <p class="note">When using RDF 1.2-specific features, such as
+        <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
+        the specific RDF version should be announced using
+        either the `version` <a href="#media-type">Media Type parameter</a>
+        or the <a href="#select-version">`"version"` member</a> early in the document.
+        This allows parsers that do not support these features to detect
+        the presense of such features early, and potentially
+        inform the user, giving them an opportunity to stop the job
+        or otherwise act on the fact that some amount of the input data
+        will not be processed as desired.
+        </p>
+
+        <p class="note">Version numbers other than "1.2" are not defined by
+        this specification.
+        Processors may treat this as an error or warning.</p>
+	  </section>
     </section>
     <section id="json-result-object">
       <h2>JSON Results Object</h2>
@@ -423,11 +456,12 @@ span.cancast:hover { background-color: #ffa;
       query's <code>SELECT</code> clause.</p>
       <section id="select-head">
         <h3>"head"</h3>
-        <p>The <code>"head"</code> member gives the variables mentioned in the results and may contain a <code>"link"</code> member.</p>
+        <p>The <code>"head"</code> member gives the variables mentioned in the results, may contain a <code>"link"</code> member, and may contain a <code>"version"</code> member.</p>
         <pre class="box json">{
 "head" { 
    "vars" : [ ... ] ,
-   "link" : [ ... ] }</pre>
+   "link" : [ ... ] ,
+   "version" : "..." }</pre>
         <section id="select-vars">
           <h4>"vars"</h4>
           <p>The <code>"vars"</code> member is an array giving the names of the variables used in the results. These are the projected variables from the query. A variable is not necessarily given a
@@ -441,6 +475,12 @@ span.cancast:hover { background-color: #ffa;
           <p>The optional <code>"link"</code> member gives an array of URIs, as strings, to refer for further information. The format and content of these link references is not defined by this
           document.</p>
           <pre class="box json">"link" : [ "http://example/dataset/metadata.ttl" ] </pre>
+        </section>
+        <section id="select-version">
+          <h4>"version"</h4>
+          <p>The optional <code>"version"</code> string member, along with an optional `version` <a href="#media-type">Media Type parameter</a>,
+          can be used to announce that RDF 1.2 functionalities are used in the results.</p>
+          <pre class="box json">"version" : "1.2" </pre>
         </section>
       </section>
       <section id="select-results">
@@ -673,6 +713,7 @@ span.cancast:hover { background-color: #ffa;
         <li>Use Media Type instead of MIME Type in <a href="#media-type" class="sectionRef"></a></li>
         <li>Allow triple terms to be expressed in <a href="#select-encode-terms" class="sectionRef"></a></li>
         <li>Support directional language-tagged strings in <a href="#select-encode-terms" class="sectionRef"></a></li>
+		<li>Add version announcement in <a href="#version-announcement" class="sectionRef"></a> and <a href="#select-version" class="sectionRef"></a></li>
       </ul>
     </section>
     
