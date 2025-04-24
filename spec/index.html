@@ -372,8 +372,8 @@ span.cancast:hover { background-color: #ffa;
 	    <h3>Version Announcement</h3>
 	    <p>To indicate that RDF 1.2 features are used in the SPARQL results,
         such as <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a> or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>,
-	    the optional `version` <a href="#media-type">Media Type parameter</a> can be set to `1.2`.
-        Alternatively, the <a href="#select-version">`"version"` member</a> can be used to specify this version.</p>
+	    the optional `version` <a href="#media-type">Media Type parameter</a> MAY be set to `1.2`.
+        Alternatively, the <a href="#select-version">`"version"` member</a> MAY be used to specify this version.</p>
         <p>When providing content over HTTP, servers can announce the version
         using the optional `version` <a href="#media-type">Media Type parameter</a>:</p>
 
@@ -398,7 +398,7 @@ Accept: application/sparql-results+json; version=1.2
 
         <p class="note">Version numbers other than "1.2" are not defined by
         this specification.
-        Processors may treat this as an error or warning.</p>
+        Processors MAY treat this as an error or warning.</p>
 	  </section>
     </section>
     <section id="json-result-object">
@@ -479,7 +479,7 @@ Accept: application/sparql-results+json; version=1.2
         <section id="select-version">
           <h4>"version"</h4>
           <p>The optional <code>"version"</code> string member, along with an optional `version` <a href="#media-type">Media Type parameter</a>,
-          can be used to announce that RDF 1.2 functionalities are used in the results.</p>
+          MAY be used to announce that RDF 1.2 functionalities are used in the results.</p>
           <pre class="box json">"version" : "1.2" </pre>
         </section>
       </section>
