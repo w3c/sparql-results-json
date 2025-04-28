@@ -370,9 +370,12 @@ span.cancast:hover { background-color: #ffa;
 
 	  <section id="version-announcement">
 	    <h3>Version Announcement</h3>
-	    <p>To indicate that RDF 1.2 features are used in the SPARQL results,
-        such as <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a> or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>,
-	    the optional `version` <a href="#media-type">Media Type parameter</a> MAY be set to `1.2`.
+	    <p>
+	    An optional version can be given to SPARQL results.
+	    </p>
+	    <p>
+	    The `version` <a href="#media-type">Media Type parameter</a> MAY be set to `1.2`
+	    to indicate possible use of RDF 1.2 features in the SPARQL results.
         Alternatively, the <a href="#select-version">`"version"` member</a> MAY be used to specify this version.</p>
         <p>When providing content over HTTP, servers can announce the version
         using the optional `version` <a href="#media-type">Media Type parameter</a>:</p>
@@ -386,7 +389,7 @@ Accept: application/sparql-results+json; version=1.2
 
         <p class="note">When using RDF 1.2-specific features, such as
         <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
-        the specific RDF version should be announced using
+        the specific RDF version can be announced using
         either the `version` <a href="#media-type">Media Type parameter</a>
         or the <a href="#select-version">`"version"` member</a> early in the document.
         This allows parsers that do not support these features to detect
