@@ -171,11 +171,11 @@ Accept: application/sparql-results+json; version=1.2
     </section>
     <section id="select-results-form">
       <h2>Variable Binding Results</h2>
-      <p>The results of a SPARQL <code>SELECT</code> query are serialized as an array of bindings of variables. The <code>"head"</code> member is an object whose <code>"vars"</code> member is an array of the variables projected in the
-      query's <code>SELECT</code> clause.</p>
+      <p>The results of a SPARQL <code>SELECT</code> query are serialized as a single top-level JSON object.</p>
       <section id="select-head">
         <h3>"head"</h3>
-        <p>The <code>"head"</code> member gives the variables mentioned in the results, may contain a <code>"link"</code> member, and may contain a <code>"version"</code> member.</p>
+        <p>The value of the <code>"head"</code> member is an object containing a <code>"vars"</code> array of projected variable names. It may also contain a <code>"link"</code> member, a <code>"version"</code> member, or
+        both.</p>
         <pre class="json">{
 "head": { 
    "vars" : [ ... ] ,
